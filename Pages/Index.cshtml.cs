@@ -1,26 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using StaffApplication.Models;
 
 namespace StaffApplication.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly StaffContext _staffContext;
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
+        public IndexModel(ILogger<IndexModel> logger, StaffContext staffContext)
+        { 
             _logger = logger;
+            _staffContext = staffContext;
+
         }
-        public string myFirstTextLiteral;
-        public string Name => (string)TempData[nameof(Name)];
-        public void OnGet()
+
+        public List<Staff> AllStaffList = new List<Staff>();
+
+        public async Task<IActionResult> OnGetAsync()
         {
-            this.myFirstTextLiteral = "Hello, world!";
-        }
-        public IActionResult OnPost([FromForm] string name)
-        {
-            TempData["Name"] = name;
-            return RedirectToPage("Index");
+            AllStaffList = await _staffContext.Staff.ToListAsync();
+            return Page();
         }
 
     }

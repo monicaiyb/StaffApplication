@@ -9,7 +9,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
     
-    <h3>@Model.myFirstTextLiteral</h3>
+   
     
     <h4>There's no place like 
         @{
@@ -19,11 +19,20 @@
     </h4>
 </div>
 <div>
-    <form method="post" asp-page="Index">
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" placeholder="Enter Name" autocomplete="off" />    
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.AllStaffList)
+            {
+                <div class="col-md-3 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Id</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@item.Name $</h6>
+                            <p class="card-text">@item.Department</p>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>

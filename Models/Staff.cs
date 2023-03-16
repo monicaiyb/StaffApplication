@@ -6,10 +6,13 @@ namespace StaffApplication.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+       
+        public string LastName { get; set; }
+        public string FirstMidName { get; set; }
+        public DateTime EmploymentDate { get; set; }
 
-        [Required]
-        public string Department { get; set; }
+        public ICollection<Department> Department { get; set; }
     }
+
 }
+
