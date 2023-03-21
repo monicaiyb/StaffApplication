@@ -1,16 +1,31 @@
 using Microsoft.EntityFrameworkCore;
-using StaffApplication.Models;
+using StaffApplication.Data;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddDbContext<StaffContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+       
+        ));
+
+
 var app = builder.Build();
-builder.Services.AddDbContext<StaffContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StaffDB"));
-});
+
+
+
+
+
+//builder.Services.AddDbContext<StaffContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("StaffDB"));
+//});
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -21,11 +36,26 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+app.Use(async (context, next) =>
+    {
+        try
+        {
+            await next(context);
+        }
+        catch (Exception e)
+        {
+           context.Response.StatusCode = 500;
+        }
+        
+        
+    }
+);
 
 app.MapRazorPages();
 

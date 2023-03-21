@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using StaffApplication.Data;
 using StaffApplication.Models;
 
 namespace StaffApplication.Pages
