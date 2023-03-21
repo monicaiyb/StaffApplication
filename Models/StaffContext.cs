@@ -8,5 +8,7 @@ namespace StaffApplication.Models
         }
 
         public DbSet<Staff> Staff { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
     }
 }

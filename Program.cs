@@ -9,7 +9,7 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 builder.Services.AddDbContext<StaffContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MyWorldDbConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StaffDB"));
 });
 
 // Configure the HTTP request pipeline.

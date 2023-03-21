@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace StaffApplication.Models
 {
@@ -10,6 +11,8 @@ namespace StaffApplication.Models
         public string LastName { get; set; }
         public string FirstMidName { get; set; }
         public DateTime EmploymentDate { get; set; }
+        
+        public int DepartmentId { get; set; }
 
         public ICollection<Department> Department { get; set; }
     }
