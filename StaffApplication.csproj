@@ -21,8 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Employees\" />
-  </ItemGroup>
-
 </Project>
