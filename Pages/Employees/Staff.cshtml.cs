@@ -8,5 +8,10 @@ namespace StaffApplication.Pages.Employees
         public void OnGet()
         {
         }
+
+        public void OnPost()
+        {
+
+        }
     }
 }
