@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StaffApplication.Data;
+using StaffApplication.Entity;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<StaffContext>(
        
         ));
 
-
+builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 var app = builder.Build();
 
 
