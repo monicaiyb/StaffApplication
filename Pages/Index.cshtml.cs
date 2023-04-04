@@ -22,7 +22,7 @@ namespace StaffApplication.Pages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            AllStaffList = await _staffContext.Staff.ToListAsync();
+            AllStaffList = await _staffContext.Staff?.ToListAsync();
             return Page();
         }
 

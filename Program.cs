@@ -49,7 +49,7 @@ app.Use(async (context, next) =>
         {
             await next(context);
         }
-        catch (Exception e)
+        catch (Exception )
         {
            context.Response.StatusCode = 500;
         }
