@@ -10,5 +10,6 @@ namespace StaffApplication.Entity
     {
 
         Task CreateAsync(T entity);
+        Task<List<T>> ReadAllAsync();
     }
 }

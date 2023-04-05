@@ -1,4 +1,5 @@
-﻿using StaffApplication.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using StaffApplication.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace StaffApplication.Entity
 
             context.Add(entity);
             await context.SaveChangesAsync();
+        }
+        public async Task<List<T>> ReadAllAsync()
+        {
+            return await context.Set<T>().ToListAsync();
         }
     }
 }
