@@ -16,19 +16,27 @@
     
 
 
-<div class="container">
-    <div class="row">
-        @*@foreach (var item in Model.AllStaffList)
+    @{
+        ViewData["Title"] = "Movies";
+    }
+
+<h1 class="bg-info text-white">Movies</h1>
+<a asp-page="Create" class="btn btn-secondary">Create a Movie</a>
+
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actors</th>
+    </tr>
+        @foreach ( var staff in Model.staffList)
         {
-            <div class="col-md-3 m-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Id</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@item. $</h6>
-                        <p class="card-text">@item.Department</p>
-                    </div>
-                </div>
-            </div>
-        }*@
-    </div>
-</div>
+            <tr>
+            <td>@staff.Id</td>
+            <td>@staff.LastName</td>
+                <td>@staff.FirstName</td>
+                <td>@staff.Email</td>
+                <td>@staff.EmploymentDate</td>
+            </tr>
+        }
+</table>

@@ -22,18 +22,15 @@ namespace StaffApplication.Pages.Employees
                 return Page();
             }
 
-            public async Task<IActionResult> OnPostAsync()
-            {
-                if (ModelState.IsValid)
-                    await repository.CreateAsync(staff);
-                return Page();
-            }
-       
-        
-
-        public void OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-
+            if (ModelState.IsValid)
+                await repository.CreateAsync(staff);
+            return Page();
         }
+
+
+
+      
     }
 }
