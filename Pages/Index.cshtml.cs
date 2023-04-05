@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using StaffApplication.Data;
+using StaffApplication.Entity;
 using StaffApplication.Models;
 
 namespace StaffApplication.Pages
@@ -11,18 +12,32 @@ namespace StaffApplication.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly StaffContext _staffContext;
 
-        public IndexModel(ILogger<IndexModel> logger, StaffContext staffContext)
-        { 
-            _logger = logger;
-            _staffContext = staffContext;
+        //public IndexModel(ILogger<IndexModel> logger, StaffContext staffContext)
+        //{ 
+        //    _logger = logger;
+        //    _staffContext = staffContext;
 
+        //}
+
+        private readonly IRepository<Staff> repository;
+        public IndexModel(IRepository<Staff> repository, ILogger<IndexModel> logger)
+        {
+            this._logger = logger;
+            this.repository = repository;
         }
 
-        public List<Staff> AllStaffList = new List<Staff>();
+        [BindProperty]
+        public Staff movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-            AllStaffList = await _staffContext.Staff?.ToListAsync();
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (ModelState.IsValid)
+                await repository.CreateAsync(movie);
             return Page();
         }
 

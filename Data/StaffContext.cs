@@ -45,8 +45,8 @@ namespace StaffApplication.Data
         //}
 
 
-        public DbSet<Staff>? Staff { get; set; }
-        public DbSet<Department>? Departments { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
     }
 }

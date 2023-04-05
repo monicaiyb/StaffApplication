@@ -18,16 +18,6 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 var app = builder.Build();
 
 
-
-
-
-//builder.Services.AddDbContext<StaffContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("StaffDB"));
-//});
-
-
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

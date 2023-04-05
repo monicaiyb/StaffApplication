@@ -8,9 +8,6 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
-    
-   
-    
     <h4>There's no place like 
         @{
             string remoteIP = Request.HttpContext.Connection.RemoteIpAddress.ToString();
@@ -21,18 +18,19 @@
 <div>
     <div class="container">
         <div class="row">
-            @foreach (var item in Model.AllStaffList)
+     @*       @foreach (var item in Model.AllStaffList)
             {
                 <div class="col-md-3 m-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">@item.Id</h5>
                             <h6 class="card-subtitle mb-2 text-muted">@item. $</h6>
-                            <p class="card-text">@item.Department</p>
-                        </div>
+                          </div>
                     </div>
                 </div>
-            }
+            }*@
         </div>
     </div>
 </div>
+
+

@@ -1,29 +1,47 @@
-﻿@page
+﻿page
 @model StaffApplication.Pages.Employees.StaffModel
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using StaffApplication.Entity;
+@using StaffApplication.Models;
+@using Models;
+
 @{
+    ViewData["Title"] = "Create a Movie";
 }
 
+<h1 class="bg-info text-white">Create a Movie</h1>
 
-<h4>Add New Staff</h4>
-<div class="col-sm-12">
-    <div>
-        <label>First Name</label>
-        <input type="text" name="firstName" required="required"/>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.staff.FirstName"></label>
+        <input type="text" asp-for="@Model.staff.FirstName" class="form-control" />
+        <span asp-validation-for="@Model.staff.FirstName" class="text-danger"></span>
     </div>
-    <div>
-        <label>last Name</label>
-        <input type="text" name="lastName" required="required" />
+    <div class="form-group">
+        <label asp-for="@Model.staff.LastName"></label>
+        <input type="text" asp-for="@Model.staff.LastName" class="form-control" />
+        <span asp-validation-for="@Model.staff.LastName" class="text-danger"></span>
     </div>
-    <div>
-        <label>Department</label>
-        <input type="text" name="department" required="required" />
+    <div class="form-group">
+        <label asp-for="@Model.staff.Email"></label>
+        <input type="text" asp-for="@Model.staff.Email" class="form-control" />
+        <span asp-validation-for="@Model.staff.Email" class="text-danger"></span>
     </div>
-    <div>
-        <label>Email</label>
-        <input type="email" name="email" required="required" />
+    <div class="form-group">
+        <label asp-for="@Model.staff.EmploymentDate"></label>
+        <input type="text" asp-for="@Model.staff.EmploymentDate" class="form-control" />
+        <span asp-validation-for="@Model.staff.EmploymentDate" class="text-danger"></span>
     </div>
-    <div>
-        <label>Start Date</label>
-        <input type="datetime" name="startDate" required="required" />
+    <div class="form-group">
+        <label asp-for="@Model.staff.DepartmentId"></label>
+        <input type="text" asp-for="@Model.staff.DepartmentId" class="form-control" />
+        <span asp-validation-for="@Model.staff.DepartmentId" class="text-danger"></span>
     </div>
-</div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@functions {
+   
+}
