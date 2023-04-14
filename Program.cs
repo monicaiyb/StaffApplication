@@ -1,3 +1,5 @@
+using HotChocolate.AspNetCore.Playground;
+using HotChocolate.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using StaffApplication.Data;
 using StaffApplication.Entity;
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddGraphQLServer();
 
 builder.Services.AddDbContext<StaffContext>(
     options => options.UseSqlServer(
@@ -24,7 +27,10 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+ 
 }
+
+
 
 app.UseHttpsRedirection();
 
@@ -47,6 +53,8 @@ app.Use(async (context, next) =>
         
     }
 );
+
+app.MapGraphQL();
 
 app.MapRazorPages();
 
